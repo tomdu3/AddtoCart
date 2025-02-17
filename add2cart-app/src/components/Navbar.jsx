@@ -9,19 +9,19 @@ const Navbar = () => {
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-600 hover:text-white-600 dark:text-gray-300 dark:hover:text-white-400">
+              <a href="#" className="text-gray-600 hover:text-indigo-400 dark:text-gray-300 dark:hover:text-white-400 transition-colors">
                 All Products
               </a>
-              <a href="#" className="text-gray-600 hover:text-white-600 dark:text-gray-300 dark:hover:text-white-400">
+              <a href="#" className="text-gray-600 hover:text-indigo-400 dark:text-gray-300 dark:hover:text-white-400 transition-colors">
                 Clothes
               </a>
-              <a href="#" className="text-gray-600 hover:text-white-600 dark:text-gray-300 dark:hover:text-white-400">
+              <a href="#" className="text-gray-600 hover:text-indigo-400 dark:text-gray-300 dark:hover:text-white-400 transition-colors">
                 Shoes
               </a>
             </div>
             <div className="hidden md:flex items-center space-x-4">
               <button className="relative p-2">
-              <i class="fa-solid fa-basket-shopping text-white"></i>
+              <i class="fa-solid fa-basket-shopping text-xl text-gray-400 hover:text-white transition-colors"></i>
                 <span className="absolute -top-1 -right-1 bg-blue-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
                   0
                 </span>
