@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Temporary styling for a Product Card */
+.product-card {
+    width: 25%;
+}

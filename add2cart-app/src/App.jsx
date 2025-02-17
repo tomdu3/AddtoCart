@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ProductCard from './components/ProductCard';
 import Footer from './components/Footer';
 
 // Main App Component
@@ -173,6 +174,7 @@ return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navbar />
       <Hero />
+      <ProductCard product={products[0]} />
       <Footer />
     </div>
   );
