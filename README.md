@@ -71,7 +71,7 @@ The application is structured into several components:
 
 [Favicon.io](https://favicon.io/) - Free favicon generator used to create the site's favicon icon
 [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling used as the build tool and development server
-
+[Am I Responsive](https://ui.dev/amiresponsive) - is a web-based tool that allows developers to quickly check how their website looks across different device sizes.
 
 ## License 📄
 
