@@ -57,7 +57,7 @@ const App = () => {
     };
 
     return (
-        <div>
+        <>
             <Navbar cartItemCount={cartItems.length} handleOpenModal={handleOpenModal} />
             <Hero />
             <ProductsTable products={products} handleAddToCart={handleAddToCart} />
@@ -70,7 +70,7 @@ const App = () => {
             />
             <Footer />
             {alert.visible && <Alert message={alert.message} type={alert.type} />}
-        </div>
+        </>
     );
 };
 
