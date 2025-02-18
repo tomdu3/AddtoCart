@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const CartModal = ({ cartItems, handleRemoveFromCart, handleCloseModal, isModalOpen, handleUpdateQuantity }) => {
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    useEffect(() => {
+        const handleEscape = (event) => {
+            if (event.key === 'Escape') {
+                handleCloseModal();
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+        };
+    }, [handleCloseModal]);
+
+
     return (
         <div
+            id="cartModal"
             className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}
         >
-            <div className="bg-white rounded-lg shadow-md p-6 w-96 overflow-y-auto max-h-[300px]"> {/* Added overflow-y-auto and max-height */}
+            <div className="bg-white rounded-lg shadow-md p-6 w-96 overflow-y-auto max-h-[300px]">
                 <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
                 {cartItems.length > 0 ? (
                     <div>
