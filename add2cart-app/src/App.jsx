@@ -33,6 +33,16 @@ const App = () => {
         }
     };
 
+    const handleUpdateQuantity = (productId, newQuantity) => {
+        if (newQuantity < 1) return;
+        
+        setCartItems(cartItems.map(item => 
+            item.id === productId 
+                ? { ...item, quantity: newQuantity }
+                : item
+        ));
+    };
+
     const handleRemoveFromCart = (productId) => {
         setCartItems(cartItems.filter((item) => item.id !== productId));
         showAlert('Item removed from cart', 'success');
@@ -56,6 +66,7 @@ const App = () => {
                 handleRemoveFromCart={handleRemoveFromCart}
                 handleCloseModal={handleCloseModal}
                 isModalOpen={isModalOpen}
+                handleUpdateQuantity={handleUpdateQuantity}
             />
             <Footer />
             {alert.visible && <Alert message={alert.message} type={alert.type} />}
