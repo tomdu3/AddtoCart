@@ -1,29 +1,70 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductsTable from './components/ProductsTable';
+import CartModal from './components/CartModal';
+import Alert from './components/Alert';
+import { products } from './data/products';
 import Footer from './components/Footer';
 import Alert from './components/Alert';
 import products from './data/products.json';
 const CartContext = React.createContext();
 
+const App = () => {
+    const [cartItems, setCartItems] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [alert, setAlert] = useState({ message: '', type: '', visible: false });
 
-// Main App Component
-const App =  ({ children }) => {
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
 
+    const showAlert = (message, type) => {
+        setAlert({ message, type, visible: true });
+        setTimeout(() => {
+            setAlert({ message: '', type: '', visible: false });
+        }, 3000);
+    };
 
-const [alert, setAlert] = useState({ message: '', type: '' });
+    const handleAddToCart = (product) => {
+        const existingItem = cartItems.find((item) => item.id === product.id);
+        if (existingItem) {
+            showAlert('Item already added to cart', 'error');
+        } else {
+            setCartItems([...cartItems, { ...product, quantity: 1 }]);
+            showAlert('Item added to cart successfully', 'success');
+        }
+    };
 
+    const handleRemoveFromCart = (productId) => {
+        setCartItems(cartItems.filter((item) => item.id !== productId));
+        showAlert('Item removed from cart', 'success');
+    };
 
-return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Navbar />
-      <Hero />
-      {/* <ProductCard product={products[0]} /> */}
-      <ProductsTable products={products} />
-      <Footer />
-    </div>
-  );
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    return (
+        <div>
+            <Navbar cartItemCount={cartItems.length} handleOpenModal={handleOpenModal} />
+            <Hero />
+            <ProductsTable products={products} handleAddToCart={handleAddToCart} />
+            <CartModal
+                cartItems={cartItems}
+                handleRemoveFromCart={handleRemoveFromCart}
+                handleCloseModal={handleCloseModal}
+                isModalOpen={isModalOpen}
+            />
+            <Footer />
+            {alert.visible && <Alert message={alert.message} type={alert.type} />}
+        </div>
+    );
 };
 
 export default App;
