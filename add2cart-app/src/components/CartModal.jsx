@@ -1,12 +1,11 @@
 import React from 'react';
 
-const CartModal = ({ cartItems, handleRemoveFromCart, handleCloseModal, isModalOpen }) => {
-    const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+const CartModal = ({ cartItems, handleRemoveFromCart, handleCloseModal, isModalOpen, handleUpdateQuantity }) => {
+    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return (
         <div
-            className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'
-                }`}
+            className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}
         >
             <div className="bg-white rounded-lg shadow-md p-6 w-96">
                 <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
@@ -15,7 +14,24 @@ const CartModal = ({ cartItems, handleRemoveFromCart, handleCloseModal, isModalO
                         {cartItems.map((item) => (
                             <div key={item.id} className="flex justify-between items-center mb-4">
                                 <div>
-                                    {item.title} - ${item.price}
+                                    <div>{item.title}</div>
+                                    <div className="text-gray-600">${(item.price * item.quantity).toFixed(2)}</div>
+                                    <div className="flex items-center mt-2">
+                                        <button
+                                            onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+                                            className="bg-gray-200 px-2 py-1 rounded-l"
+                                            disabled={item.quantity <= 1}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="px-4 py-1 bg-gray-100">{item.quantity}</span>
+                                        <button
+                                            onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+                                            className="bg-gray-200 px-2 py-1 rounded-r"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </div>
                                 <button
                                     onClick={() => handleRemoveFromCart(item.id)}
