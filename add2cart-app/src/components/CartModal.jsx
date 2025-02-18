@@ -7,7 +7,7 @@ const CartModal = ({ cartItems, handleRemoveFromCart, handleCloseModal, isModalO
         <div
             className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${isModalOpen ? 'block' : 'hidden'}`}
         >
-            <div className="bg-white rounded-lg shadow-md p-6 w-96">
+            <div className="bg-white rounded-lg shadow-md p-6 w-96 overflow-y-auto max-h-[300px]"> {/* Added overflow-y-auto and max-height */}
                 <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
                 {cartItems.length > 0 ? (
                     <div>
