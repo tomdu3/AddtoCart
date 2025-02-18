@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import ProductsTable from './components/ProductsTable';
 import CartModal from './components/CartModal';
 import Alert from './components/Alert';
 import { products } from './data/products';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
+import Alert from './components/Alert';
+import products from './data/products.json';
+const CartContext = React.createContext();
 
 const App = () => {
     const [cartItems, setCartItems] = useState([]);
