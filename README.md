@@ -69,9 +69,7 @@ The application is structured into several components:
 
 ## Acknowledgements 🙏
 
-*   Fake Store API - For providing the product data.
-*   Tailwind CSS - For rapid and efficient styling.
-*   React - For building the user interface.
+[Favicon.io](https://favicon.io/) - Free favicon generator used to create the site's favicon icon
 
 ## License 📄
 
