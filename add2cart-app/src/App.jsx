@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProductCard from './components/ProductCard';
 import ProductsTable from './components/ProductsTable';
 import Footer from './components/Footer';
 
@@ -169,7 +168,9 @@ const App = () => {
     description: "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print",
     image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
   }
-]; 
+];
+
+
 
 return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
